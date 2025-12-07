@@ -32,10 +32,49 @@
     console.log("📦 Payload pronto:", payload);
 
     try {
+      const res = await fetch(
+        "https://profVerissimoFatec.pythonanywhere.com/professores",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const data = await res.json();
+      console.log("📨 Resposta da API:", data);
+
+      // ============================================
+      // TRATAMENTO DE ERROS ESPECÍFICOS
+      // ============================================
+      if (!res.ok) {
+
+        // ERRO 409 – matrícula duplicada
+        if (res.status === 409) {
+          Toast.show("Número de Matrícula Cadastrada Anteriormente", "error");
+          console.warn("⚠ Matrícula duplicada:", data);
+          return;
+        }
+
+        // Outros erros genéricos
+        Toast.show(`Erro: ${data.erro || "Falha ao salvar"}`, "error");
+        console.error("❌ Erro retornado pela API", data);
+        return;
+      }
+
+      // ============================================
+      // SUCESSO
+      // ============================================
       Toast.show("Professor salvo com sucesso!", "success");
-      console.log("✅ Toast.show foi chamado!");
+      console.log("✅ Cadastro realizado com sucesso!");
+
+      form.reset();
+
     } catch (err) {
-      console.error("❌ ERRO ao chamar Toast.show:", err);
+      console.error("❌ ERRO ao enviar requisição:", err);
+      Toast.show("Erro ao conectar com o servidor!", "error");
     }
   });
 })();

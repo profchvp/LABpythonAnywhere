@@ -1,2 +1,4 @@
 Para acesar o site em GitHub Pages:
     https://profchvp.github.io/LABpythonAnywhere/
+	
+	URL DEV: C:\Desenv\LABpythonAnywhere_V1\Front-end-Fatec-admin
