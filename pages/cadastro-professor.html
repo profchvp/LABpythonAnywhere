@@ -1,0 +1,75 @@
+<div class="card card-cps p-4">
+  <h3 class="mb-3 text-cps">Cadastro de Professor</h3>
+
+  <form id="formProfessor" class="row g-3">
+
+    <div class="col-md-3">
+      <label class="form-label">Matrícula</label>
+      <input type="number" id="matricula" class="form-control" required />
+    </div>
+
+    <div class="col-md-9">
+      <label class="form-label">Nome do Professor</label>
+      <input type="text" id="nomeProfessor" class="form-control" required />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Status / Situação</label>
+      <select id="statusSituacao" class="form-select" required>
+        <option value="1">Ativo</option>
+        <option value="0">Inativo</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Regime Jurídico</label>
+      <input type="text" id="regimeJuridico" class="form-control" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Carga Horária</label>
+      <input type="text" id="cargaHoraria" class="form-control" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Hora Atividade</label>
+      <input type="number" id="horaAtividade" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">HAE - O</label>
+      <input type="text" id="HAE_O" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">HAE - C</label>
+      <input type="text" id="HAE_C" class="form-control" />
+    </div>
+
+     
+
+    <div class="col-md-4">
+      <label class="form-label">Observação (Manhã)</label>
+      <textarea id="obsManha" class="form-control"></textarea>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Observação (Tarde)</label>
+      <textarea id="obsTarde" class="form-control"></textarea>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Observação (Noite)</label>
+      <textarea id="obsNoite" class="form-control"></textarea>
+    </div>
+
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-cps px-4">Salvar</button>
+    </div>
+
+  </form>
+</div>
+
+<link rel="stylesheet" href="../assets/css/cadastroProfessor.css" />
+
+

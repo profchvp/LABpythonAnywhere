@@ -1,0 +1,176 @@
+:root {
+  --cps-red: #B71C1C;
+  --cps-red-dark: #8E0000;
+  --cps-gray-900: #333333;
+  --cps-gray-100: #F5F5F5;
+  --cps-white: #FFFFFF;
+}
+
+/* ======== BASE ======== */
+
+body {
+  font-family: 'Roboto', 'Open Sans', Arial, Helvetica, sans-serif;
+  background-color: var(--cps-gray-100);
+  color: var(--cps-gray-900);
+}
+
+.bg-cps { background-color: var(--cps-red); }
+.text-cps { color: var(--cps-red); }
+
+/* ======== NAVBAR ======== */
+
+.navbar-cps {
+  background-color: var(--cps-red);
+  border-bottom: 4px solid var(--cps-red-dark);
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.navbar-cps .navbar-brand {
+  color: var(--cps-white);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.navbar-cps .nav-link {
+  color: var(--cps-white);
+  font-weight: 400;
+}
+
+.navbar-cps .nav-link:hover,
+.navbar-cps .dropdown-item:hover {
+  color: #ffecec !important;
+}
+
+/* Força o caret branco */
+.navbar-cps .dropdown-toggle::after {
+  color: #fff;
+}
+
+/* Dropdown CPS */
+.dropdown-menu {
+  background: #fdfdfd;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 230px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+  background: #f2f2f2;
+}
+
+/* ======== BOTÃO PADRÃO ======== */
+
+.btn-cps {
+  background-color: var(--cps-red);
+  color: var(--cps-white);
+  border: none;
+}
+.btn-cps:hover {
+  background-color: var(--cps-red-dark);
+  color: var(--cps-white);
+}
+
+/* ======== CARDS ======== */
+
+.card-cps {
+  border-top: 4px solid var(--cps-red);
+}
+
+/* ======== TOAST ======== */
+
+.toast.text-bg-danger {
+  background-color: var(--cps-red) !important;
+}
+
+/* ======== FOOTER ======== */
+
+.footer-cps {
+  background-color: var(--cps-white);
+  border-top: 2px solid var(--cps-gray-100);
+  color: var(--cps-gray-900);
+}
+
+/* ===============================================
+   SANFONA (accordion custom da versão anterior)
+   Obs: Mantive porque você pode querer reutilizar.
+   Não interfere no dropdown oficial.
+   =============================================== */
+
+.dropdown-accordion {
+  position: relative;
+}
+
+.accordion-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  position: relative;
+}
+
+.accordion-toggle::after {
+  content: "▾";
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.accordion-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  display: none;
+  flex-direction: column;
+  background: #06395c;
+  border-radius: 6px;
+  margin-top: 4px;
+  padding: 8px 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 220px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  animation: dropdownFade 0.18s ease-out;
+  z-index: 999;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.accordion-link {
+  padding: 10px 16px;
+  color: #fff;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.15s ease, padding-left 0.15s ease;
+}
+
+.accordion-link:hover {
+  background: rgba(255,255,255,0.12);
+  padding-left: 20px;
+}
+
+@media (max-width: 991px) {
+  .accordion-content {
+    position: static;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+}

@@ -1,0 +1,12 @@
+.card-cps h3 {
+  font-weight: 600;
+}
+
+#formProfessor textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+#btnMassa {
+  margin-top: 4px;
+}

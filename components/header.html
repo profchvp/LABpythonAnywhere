@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-cps">
+  <div class="container">
+
+    <!-- BRAND -->
+    <a class="navbar-brand text-white fw-semibold" href="#">
+      # Fatec • Centro Paula Souza
+      <span class="badge bg-light text-dark fw-semibold d-none" id="brand-unidade"></span>
+    </a>
+
+    <!-- Toggle para mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav"
+            aria-controls="topNav" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="topNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Dropdown Cadastros -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="cadastrosMenu"
+     role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Cadastros
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="cadastrosMenu" style="min-width:260px">
+
+    <!-- TÍTULO: UNITÁRIO -->
+    <li><h6 class="dropdown-header text-uppercase text-muted">Cadastro Unitário</h6></li>
+
+    <li><a class="dropdown-item" href="#" data-route="cadastro-professor">Professor</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-disciplina">Disciplina</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-curso">Curso</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-turma">Turma</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-sala">Sala</a></li>
+
+    <li><hr class="dropdown-divider"></li>
+
+    <!-- TÍTULO: EM MASSA -->
+    <li><h6 class="dropdown-header text-uppercase text-muted">Cadastro em Massa</h6></li>
+
+    <li><a class="dropdown-item" href="#" data-route="cadastro-professor-massa">Professor (massa)</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-disciplina-massa">Disciplina (massa)</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-curso-massa">Curso (massa)</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-turma-massa">Turma (massa)</a></li>
+    <li><a class="dropdown-item" href="#" data-route="cadastro-sala-massa">Sala (massa)</a></li>
+
+  </ul>
+</li>
+
+
+        <!-- Outros menus -->
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-route="grade">Gerar Grade Horária do Professor</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-route="frequencia">Gerar Folha de Frequência</a>
+        </li>
+      </ul>
+
+      <!-- Área do usuário -->
+      <div id="user-area" class="ms-auto text-white"></div>
+    </div>
+  </div>
+</nav>
