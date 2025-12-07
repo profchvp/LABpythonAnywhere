@@ -71,7 +71,13 @@
       console.log("✅ Cadastro realizado com sucesso!");
 
       form.reset();
-
+      // ----------------------------------------------
+      // Redireciona para a página principal após 1.2s
+      // ----------------------------------------------
+      setTimeout(() => {
+        window.location.href = "./index.html"; // ou "./pages/dashboard.html"
+      }, 1200);
+      
     } catch (err) {
       console.error("❌ ERRO ao enviar requisição:", err);
       Toast.show("Erro ao conectar com o servidor!", "error");
