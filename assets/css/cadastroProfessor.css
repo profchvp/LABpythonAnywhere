@@ -1,4 +1,4 @@
-.card-cps h3 {
+.card-cps h3, .card-cps h4 {
   font-weight: 600;
 }
 
@@ -9,4 +9,9 @@
 
 #btnMassa {
   margin-top: 4px;
+}
+
+/* Espaçamento entre cards */
+.card-cps {
+  margin-bottom: 20px;
 }

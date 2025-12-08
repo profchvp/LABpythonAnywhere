@@ -1,4 +1,4 @@
-<div class="card card-cps p-4">
+<div class="card card-cps p-4 mb-4">
   <h3 class="mb-3 text-cps">Cadastro de Professor</h3>
 
   <form id="formProfessor" class="row g-3">
@@ -46,8 +46,6 @@
       <input type="text" id="HAE_C" class="form-control" />
     </div>
 
-     
-
     <div class="col-md-4">
       <label class="form-label">Observação (Manhã)</label>
       <textarea id="obsManha" class="form-control"></textarea>
@@ -63,13 +61,43 @@
       <textarea id="obsNoite" class="form-control"></textarea>
     </div>
 
-    <div class="col-12 text-end">
-      <button type="submit" class="btn btn-cps px-4">Salvar</button>
+    <div class="col-12 text-end mt-3">
+
+
+      <button type="button" id="btnAlterar" class="btn btn-warning me-2 px-4">
+        Alterar
+      </button>
+
+      <button type="button" id="btnExcluir" class="btn btn-danger me-2 px-4">
+        Excluir
+      </button>
+
+      <button type="submit" class="btn btn-cps px-4">
+        Salvar
+      </button>
     </div>
 
   </form>
 </div>
 
+<!-- PARTE 2: LISTA DE PROFESSORES -->
+<div class="card card-cps p-4">
+  <h4 class="mb-3 text-cps">Lista de Professores</h4>
+
+  <div class="table-responsive">
+    <table class="table table-striped" id="tabelaProfessores">
+      <thead>
+        <tr>
+          <th>Matrícula</th>
+          <th>Nome do Professor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dados serão inseridos via JS futuramente -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <link rel="stylesheet" href="../assets/css/cadastroProfessor.css" />
-
-

@@ -35,22 +35,16 @@ function runPageScripts(path) {
 
   console.log("📦 runPageScripts() chamado →", path);
 
-  // Página de Cadastro de Professor
-  if (path.includes("cadastro-professor.html")) {
+   if (path.includes("cadastro-professor.html")) {
 
-    console.log("🔎 Detectado: cadastro-professor.html → tentando importar cadastroProfessor.js");
-    
-    import('./cadastroProfessor.js')
-      .then(() => {
-        
-        console.log("✅ cadastroProfessor.js IMPORTADO com sucesso!");
-      })
-      .catch(err => {
-        console.error("❌ ERRO ao importar cadastroProfessor.js", err);
-      });
+    console.log("🔎 Carregando cadastroProfessor.js como script comum...");
 
-  } else {
-    console.log("ℹ Nenhum script especial para:", path);
+    const script = document.createElement("script");
+    script.src = "./assets/js/cadastroProfessor.js";
+    script.dataset.page = "cadastro-professor";
+    script.defer = true;
+
+    document.body.appendChild(script);
   }
 }
 
