@@ -1,25 +1,19 @@
+
 // =====================================================
 // FUNÇÃO PRINCIPAL DE CARREGAMENTO DE PÁGINAS (SPA)
 // =====================================================
+
 async function loadPage(path) {
   const container = document.getElementById('main-content');
-
   console.log("📄 loadPage() chamado →", path);
-
   try {
     const res = await fetch(path);
-
     console.log("📥 Resposta do fetch:", res.status, res.statusText);
-
-    let html = await res.text();
-
+    const html = await res.text();
     container.innerHTML = html;
-
     console.log("📌 Página carregada e inserida no DOM:", path);
-
-    // Carregar scripts da página
+    // ✅ sempre passar o path aqui:
     runPageScripts(path);
-
   } catch (err) {
     console.error("❌ Erro ao carregar página:", path, err);
     Toast.show("Erro ao carregar página.", "danger");
@@ -31,28 +25,53 @@ async function loadPage(path) {
 // =====================================================
 // CARREGAMENTO DE SCRIPTS ESPECÍFICOS POR ROTA
 // =====================================================
-function runPageScripts(path) {
 
+function runPageScripts(path) {
   console.log("📦 runPageScripts() chamado →", path);
 
-   if (path.includes("cadastro-professor.html")) {
+  // ✅ Guardas para evitar ReferenceError se path estiver undefined/null
+  if (typeof path !== 'string' || path.length === 0) {
+    console.warn("⚠ runPageScripts() chamado sem path válido.");
+    return;
+  }
 
-    console.log("🔎 Carregando cadastroProfessor.js como script comum...");
-
+  // Cadastro unitário de professor
+  if (path.includes("cadastro-professor.html")) {
+    console.log("🔎 Carregando cadastroProfessor.js como script da página...");
     const script = document.createElement("script");
     script.src = "./assets/js/cadastroProfessor.js";
     script.dataset.page = "cadastro-professor";
     script.defer = true;
-
     document.body.appendChild(script);
   }
+
+  // Cadastro em massa de professor
+  if (path.includes("cadastro-professor-massa.html")) {
+    console.log("🔎 Carregando cadastroProfessorMassa.js...");
+    const script = document.createElement("script");
+    script.src = "./assets/js/cadastroProfessorMassa.js";
+    script.dataset.page = "cadastro-professor-massa";
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+
+  // (demais páginas seguem o mesmo padrão)
 }
 
+/*
+carregar o JS dessa página "Cadastro de Professor em Massa" quando ela for exibida
+// assets/js/app.js → dentro de runPageScripts(path)
+
+// ❌ REMOVIDO: havia um bloco solto usando 'path' fora de função,
+// o que gerava 'Uncaught ReferenceError: path is not defined'.
+// Todo carregamento condicional de scripts deve ficar DENTRO de runPageScripts(path).
+*/
 
 
 // =====================================================
 // NAVEGAÇÃO PARA USUÁRIOS NÃO AUTENTICADOS (PÚBLICO)
 // =====================================================
+
 async function navigatePublic() {
   console.log("🌐 Navegação pública iniciada");
   await loadPage('./pages/institucional.html');
@@ -65,6 +84,7 @@ async function navigatePublic() {
 // =====================================================
 // NAVEGAÇÃO PARA USUÁRIOS AUTENTICADOS (PAINEL)
 // =====================================================
+
 async function navigatePrivate() {
   console.log("🔐 Navegação privada iniciada");
   await loadPage('./pages/dashboard.html');
@@ -77,6 +97,7 @@ async function navigatePrivate() {
 // =====================================================
 // ROTAS INTERNAS DO MENU
 // =====================================================
+
 function wireMenuLinks() {
   console.log("🔗 wireMenuLinks() ativado → registrando handlers nos menus...");
 
@@ -160,10 +181,10 @@ function wireMenuLinks() {
 
 
 
-
 // =====================================================
 // INICIALIZAÇÃO GERAL DA APLICAÇÃO
 // =====================================================
+
 async function init() {
   console.log("🚀 init() executado → inicializando aplicação...");
 

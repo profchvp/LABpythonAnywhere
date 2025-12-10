@@ -1,0 +1,59 @@
+
+<!-- ./pages/cadastro-professor-massa.html -->
+<section class="container my-4">
+  <h1 class="h4 fw-semibold mb-3">Professor — Cadastro em Massa</h1>
+  <p class="text-muted">
+    Selecione um arquivo Excel (<code>.xlsx</code> ou <code>.xls</code>) com os dados dos professores e clique em <strong>Processar</strong>.
+  </p>
+
+  <!-- Área de feedback persistente -->
+  <div id="alertArea" class="mb-3" aria-live="polite"></div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form id="formImportarProfessorMassa" novalidate>
+        <div class="mb-3">
+          <label for="arquivoExcel" class="form-label">Arquivo Excel</label>
+          <input
+            type="file"
+            class="form-control"
+            id="arquivoExcel"
+            name="arquivoExcel"
+            accept=".xlsx,.xls"
+            aria-describedby="arquivoHelp"
+            required
+          />
+          <div id="arquivoHelp" class="form-text">
+            Formatos aceitos: <code>.xlsx</code> e <code>.xls</code>. Tamanho máximo recomendado: 10 MB.
+          </div>
+        </div>
+
+        <!-- Info do arquivo selecionado -->
+        <div id="fileInfo" class="mb-2 visually-hidden" aria-live="polite"></div>
+
+        <div class="d-flex gap-2">
+          <button type="button" id="btnProcessar" class="btn btn-primary" disabled>
+            <span class="spinner-border spinner-border-sm me-2 d-none" id="processSpinner" role="status" aria-hidden="true"></span>
+            Processar
+          </button>
+          <button type="button" id="btnLimpar" class="btn btn-outline-secondary">Limpar seleção</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modelo de planilha (opcional) -->
+  <div class="mt-4">
+    <details>
+      <summary class="fw-semibold">Baixar modelo de planilha (opcional)</summary>
+      <p class="mb-1">
+        Sugestão de colunas: <code>Matricula</code>, <code>Nome</code>, <code>Status</code>, <code>Regime</code>,
+        <code>CargaHoraria</code>, <code>HoraAtividade</code>, <code>HAE_O</code>, <code>HAE_C</code>, <code>ObsManha</code>,
+        <code>ObsTarde</code>, <code>ObsNoite</code>.
+      </p>
+      /modelos/professor_massa.xlsx
+        Baixar modelo
+      </a>
+    </details>
+  </div>
+</section>

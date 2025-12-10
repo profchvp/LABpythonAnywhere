@@ -5,3 +5,6 @@ const ENDPOINTS = {
   unidade: (codigoUnidade) => `${API_BASE}/unidades/${codigoUnidade}`,
 };
 window.Config = { API_BASE, ENDPOINTS };
+
+
+
