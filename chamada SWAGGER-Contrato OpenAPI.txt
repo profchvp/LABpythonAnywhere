@@ -1,0 +1,136 @@
+
+https://profVerissimoFatec.pythonanywhere.com/apidocs
+=========================================================
+openapi: 2.0
+
+info:
+  title: API - Grade Horária
+  description: Documentação da API de Professores
+  version: 1.0.0
+
+servers:
+  - url: https://profverissimofatec.pythonanywhere.com
+
+paths:
+  /professores/importacao-massa:
+    post:
+      tags:
+        - Professores
+      summary: Cadastro em massa de professores
+      description: |
+        Recebe uma lista de professores e realiza a inclusão em massa.
+        Retorna o resultado individual de cada professor processado.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: professores
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Professor'
+      responses:
+        200:
+          description: Resultado da importação em massa de professores
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResultadoImportacaoProfessor'
+          examples:
+            application/json:
+            - matricula: "123456"
+              nome: "João da Silva"
+              sucesso: true
+              mensagem: "Professor incluído com sucesso"
+            - matricula: "654321"
+              nome: "Maria Souza"
+              sucesso: false
+              mensagem: "Matrícula já existente"
+            - matricula: "987654"
+              nome: "Carlos Pereira"
+              sucesso: false
+              mensagem: "Campo carga_horaria inválido"
+
+definitions:
+
+  Professor:
+    type: object
+    required:
+      - matricula
+      - nomeProfessor
+      - statusSituacao
+      - regimeJuridico
+      - cargaHoraria
+      - horaAtividade
+      - HAE_O
+      - HAE_C
+      - obsManha
+      - obsTarde
+      - obsNoite
+    properties:
+      matricula:
+        type: string
+        example: "1001"
+
+      nomeProfessor:
+        type: string
+        example: "João da Silva"
+
+      statusSituacao:
+        type: string
+        example: "ATIVO"
+
+      regimeJuridico:
+        type: string
+        example: "CLT"
+
+      cargaHoraria:
+        type: integer
+        example: 20
+
+      horaAtividade:
+        type: integer
+        example: 10
+
+      HAE_O:
+        type: integer
+        example: 5
+
+      HAE_C:
+        type: integer
+        example: 5
+
+      obsManha:
+        type: string
+        example: "Disponível"
+
+      obsTarde:
+        type: string
+        example: "Indisponível"
+
+      obsNoite:
+        type: string
+        example: "Disponível"
+
+  ResultadoImportacaoProfessor:
+    type: object
+    properties:
+      matricula:
+        type: string
+        example: "123456"
+      nome:
+        type: string
+        example: "João da Silva"
+      sucesso:
+        type: boolean
+        example: true
+      mensagem:
+        type: string
+        example: "Professor incluído com sucesso"
+
+
+
+
